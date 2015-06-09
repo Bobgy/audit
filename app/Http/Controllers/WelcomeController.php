@@ -35,7 +35,7 @@ class WelcomeController extends Controller {
 
 	public function hello()
 	{
-		return view('html.index');
+		return view('audit.index');
 		//return view('welcome');
 	}
 

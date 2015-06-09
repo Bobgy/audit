@@ -5,8 +5,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Laravel</title>
+	<!-- CSS -->
+	<link href="{{ asset('/lib/Flat-UI-master/dist/css/vendor/bootstrap.min.css') }}" rel="stylesheet">
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<!-- Flat UI -->
+	<link href="{{ asset('/lib/Flat-UI-master/dist/css/flat-ui.css') }}" rel="stylesheet">
+	<link href="{{ asset('/lib/css/my.css') }}" rel="stylesheet">
+
+	<!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet"> -->
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>

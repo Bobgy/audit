@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('welcome', 'WelcomeController@index');
+//Route::get('welcome', 'WelcomeController@index');
 
-Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 
-Route::get('hello', 'WelcomeController@hello');
+Route::get('/', 'PageController@index');
+Route::get('check', 'PageController@check');
+Route::get('check_list', 'PageController@check_list');
+Route::get('fetch', 'PageController@fetch');
+Route::get('main', 'PageController@main');
+Route::get('register', 'PageController@register');
+Route::get('search', 'PageController@search');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
