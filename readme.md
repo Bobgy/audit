@@ -42,7 +42,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 Note: you should change `PATH\TO` or `ALIAS_NAME` to suit your need.
 
-- Edit `PATH\TO\wamp\bin\apache\apache2.4.9\conf\httpd.conf`, search for `<Directory />`, change `Require all denied` to `Require all granted`
+- Edit `PATH\TO\wamp\bin\apache\apache2.4.9\conf\httpd.conf`, search for `<Directory />`, change `"Require all denied"` to `"Require all granted"` (without the quotes)
 
 - After you run wamp server, click the status icon of it, choose `Apache` -> `Apache Modules` -> Check `rewrite_module`
 
