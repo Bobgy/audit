@@ -31,9 +31,9 @@
 	<nav class="my_navbar">
 		<div class="top">
 			<div class="header">
-				<a href="./check_list.html"> 账单 </a>
+				<a href="./check_list"> 账单 </a>
 				<a> 导出 </a>
-				<a href="./search.html"> 搜索 </a>
+				<a href="./search"> 搜索 </a>
 			</div>
 			<div id="user" class="ender">
 				<a> Chaiyujin </a>
