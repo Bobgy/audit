@@ -13,8 +13,12 @@ class PageController extends Controller {
 	}
 
 	//
-	public function index()
+	public function index(Request $req)
 	{
+		$password = $req->input('inputPassword');
+		if($password)return $password;
+		$a = $req->all();
+		if($a)return $a;
 		return view('audit.index');
 	}
 

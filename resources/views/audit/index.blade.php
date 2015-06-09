@@ -1,4 +1,4 @@
-@extends('app')
+@extends('audit.navbar')
 
 @section('head')
 <link href="{{ asset('/lib/Flat-UI-master/dist/css/flat-ui.css') }}" rel="stylesheet">
@@ -23,7 +23,7 @@
               </div>
               <input type="submit" name="_loginBtn" value="登陆" class="btn btn-lg btn-wide btn-primary">
               <button class="btn btn-lg btn-wide btn-default" >
-                <a href="register.html">注册</a>
+                <a href="register">注册</a>
               </button>
             </form>
             <div style="margin-left:200px">

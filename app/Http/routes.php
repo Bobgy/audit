@@ -16,12 +16,14 @@
 Route::get('home', 'HomeController@index');
 
 Route::get('/', 'PageController@index');
-Route::get('check', 'PageController@check');
+//Route::get('check', 'PageController@check');
 Route::get('check_list', 'PageController@check_list');
 Route::get('fetch', 'PageController@fetch');
 Route::get('main', 'PageController@main');
 Route::get('register', 'PageController@register');
 Route::get('search', 'PageController@search');
+
+Route::resource('check', 'CheckController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

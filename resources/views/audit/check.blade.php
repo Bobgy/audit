@@ -1,7 +1,10 @@
 @extends('audit.navbar')
 
-@section('content')
+@section('head')
+  <title>账单{{$id}}</title>
+@endsection
 
+@section('content')
     <div style="height:80px"></div>
 
     <!-- Main container Begin-->
@@ -29,7 +32,7 @@
             <div class="crossLine9"></div>
             <div class="subrow">
               <div class="content_row">
-                10000
+                {{$bill->bill_id}}
               </div>
             </div>
             <div class="crossLine"></div>
@@ -59,7 +62,7 @@
             <div class="crossLine9"></div>
             <div class="subrow">
               <div class="content_row">
-                998.00
+                100
               </div>
             </div>
             <div class="crossLine"></div>
@@ -94,7 +97,7 @@
             <div class="crossLine9"></div>
             <div class="subrow">
               <div class="content_row">
-                10000
+                {{$bill->buyer_id}}
               </div>
             </div>
             <div class="crossLine"></div>
@@ -109,7 +112,7 @@
             <div class="crossLine9"></div>
             <div class="subrow">
               <div class="content_row">
-                10001
+                {{$bill->seller_id}}
               </div>
             </div>
             <div class="crossLine"></div>
@@ -124,7 +127,7 @@
             <div class="crossLine9"></div>
             <div class="subrow">
               <div class="content_row">
-                2015.6.6
+                {{$bill->date}}
               </div>
             </div>
             <div class="crossLine"></div>
@@ -139,7 +142,7 @@
             <div class="crossLine9"></div>
             <div class="subrow">
               <div class="content_row">
-                998.00
+                {{$bill->amount}}
               </div>
             </div>
 
