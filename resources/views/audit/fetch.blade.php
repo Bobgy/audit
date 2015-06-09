@@ -1,5 +1,9 @@
 @extends('audit.navbar')
 
+@section('head')
+<link href="{{ asset('/lib/Flat-UI-master/dist/css/flat-ui.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
     <!-- Header space -->
 	  <div style="height: 60px;"></div>

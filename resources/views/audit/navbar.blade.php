@@ -9,7 +9,6 @@
 	<link href="{{ asset('/lib/Flat-UI-master/dist/css/vendor/bootstrap.min.css') }}" rel="stylesheet">
 
 	<!-- Flat UI -->
-	<link href="{{ asset('/lib/Flat-UI-master/dist/css/flat-ui.css') }}" rel="stylesheet">
 	<link href="{{ asset('/lib/css/my.css') }}" rel="stylesheet">
 
 	<!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet"> -->
@@ -23,6 +22,9 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+
+	@yield('head')
+
 </head>
 <body>
 	<!-- Nav bar Begin -->
