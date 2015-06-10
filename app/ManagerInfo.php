@@ -6,8 +6,8 @@ class ManagerInfo extends Model {
 
 	protected $table = 'manager_info';
 
-	protected $fillable = ['real_name', 'password'];
+	protected $primaryKey = 'user_id';
 
-	protected $hidden = ['password'];
-	
+	public $timestamps = false;
+
 }

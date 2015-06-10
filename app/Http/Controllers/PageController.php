@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\ManagerInfo;
 
 class PageController extends Controller {
 
@@ -26,20 +27,26 @@ class PageController extends Controller {
    // 登录操作
   public function postLogin(Request $request)
   {
-  	// 加入获取信息
-  	// if correct
-		$a = $request->all();
-		if($a)return $a;
-   	return redirect('main');
-   	// else
-   	// return back()->withInput();
+		$user_id = $request->get('_inputAccount');
+		$password = $request->get('_inputPassword');
+
+		$true_password = ManagerInfo::find($user_id)['password'];
+
+		if ($password == $true_password) {
+			session(['user_id' => $user_id]);
+			return redirect('main');
+		}
+
+		session()->forget('user_id');
+
+   	return back()->withInput();
   }
 
 	//
 	public function index(Request $request)
 	{
 		$password = $request->input('inputPassword');
-		if($password)return $password;
+		if ($password) return $password;
 		return view('audit.index');
 	}
 
@@ -50,9 +57,8 @@ class PageController extends Controller {
 
 	public function check_list()
 	{
-		$user_id = session('user_id');
-		if($user_id)return view('audit.check_list');
-		return redirect("/");
+		if (!session()->has('user_id')) return redirect('/');
+		return view('audit.check_list');
 	}
 
 	public function fetch()
