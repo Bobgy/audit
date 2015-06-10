@@ -36,7 +36,7 @@
 
 - Now you should be able to access `http://localhost/ALIAS_NAME/` and `http://localhost/ALIAS/home`
 
-Note the last "/" of the first address should not be omitted.
+  Note the last "/" of the first address should not be omitted.
 
 - To access the page with `http://localhost/ALIAS_NAME`, edit `PATH\TO\WAMP\alias\ALIAS_NAME.conf`
   Change the first line from something like:
