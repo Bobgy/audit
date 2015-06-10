@@ -12,6 +12,21 @@ class PageController extends Controller {
 		$this->middleware('guest');
 	}
 
+	public function getLogin()
+    {
+        return view('audit.index');
+    }
+ 
+     // 登录操作
+    public function postLogin()
+    {
+    	// 加入获取信息
+    	// if correct
+     	return redirect('main');
+     	// else
+     	// return back()->withInput();
+    }
+
 	//
 	public function index(Request $req)
 	{

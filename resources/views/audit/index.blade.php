@@ -13,7 +13,7 @@
       <div class="row">
         <div class="logInForm">
           <div class="col-md-12" style="width:320px;" >
-            <form id="logInForm" role="form">
+            <form  action="login" method="post" id="logInForm" role="form">
               <legend>登陆</legend>
               <div class="form-group">
                 <input type="text" class="form-control input-lg" style="width:290px;" id="inputAccount" placeholder="Account">
@@ -21,13 +21,11 @@
               <div class="form-group">
                 <input type="password" class="form-control input-lg" style="width:290px;"  id="inputPassword" placeholder="Password">
               </div>
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="submit" name="_loginBtn" value="登陆" class="btn btn-lg btn-wide btn-primary">
-              <button class="btn btn-lg btn-wide btn-default" >
-                <a href="register">注册</a>
-              </button>
             </form>
-            <div style="margin-left:200px">
-              <a href="fetch.html" >忘记密码?</a>
+            <div style="margin-left: 10px">
+              <a href="fetch" >忘记密码?</a>
             </div>
           </div>
         </div>

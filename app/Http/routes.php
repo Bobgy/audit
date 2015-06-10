@@ -22,6 +22,8 @@ Route::get('fetch', 'PageController@fetch');
 Route::get('main', 'PageController@main');
 Route::get('register', 'PageController@register');
 Route::get('search', 'PageController@search');
+Route::post('login', 'PageController@postLogin');
+Route::get('login', 'PageController@getLogin');
 
 Route::resource('check', 'CheckController');
 
