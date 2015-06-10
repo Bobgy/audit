@@ -16,10 +16,10 @@
             <form  action="login" method="post" id="logInForm" role="form">
               <legend>登陆</legend>
               <div class="form-group">
-                <input type="text" class="form-control input-lg" style="width:290px;" id="inputAccount" placeholder="Account">
+                <input type="text" class="form-control input-lg" style="width:290px;" name="_inputAccount" id="inputAccount" placeholder="Account">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control input-lg" style="width:290px;"  id="inputPassword" placeholder="Password">
+                <input type="password" class="form-control input-lg" style="width:290px;" name="_inputPassword" id="inputPassword" placeholder="Password">
               </div>
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="submit" name="_loginBtn" value="登陆" class="btn btn-lg btn-wide btn-primary">

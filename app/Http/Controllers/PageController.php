@@ -7,33 +7,39 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller {
 
+	public function showProfile(Request $request)
+	{
+		//$value = $request->session()->get('key');
+		return $request->session()->all();
+		//
+	}
 	public function __construct()
 	{
 		$this->middleware('guest');
 	}
 
 	public function getLogin()
-    {
-        return view('audit.index');
-    }
- 
-     // 登录操作
-    public function postLogin()
-    {
-    	// 加入获取信息
-    	// if correct
-     	return redirect('main');
-     	// else
-     	// return back()->withInput();
-    }
+  {
+      return view('audit.index');
+  }
+
+   // 登录操作
+  public function postLogin(Request $request)
+  {
+  	// 加入获取信息
+  	// if correct
+		$a = $request->all();
+		if($a)return $a;
+   	return redirect('main');
+   	// else
+   	// return back()->withInput();
+  }
 
 	//
-	public function index(Request $req)
+	public function index(Request $request)
 	{
-		$password = $req->input('inputPassword');
+		$password = $request->input('inputPassword');
 		if($password)return $password;
-		$a = $req->all();
-		if($a)return $a;
 		return view('audit.index');
 	}
 
@@ -44,7 +50,9 @@ class PageController extends Controller {
 
 	public function check_list()
 	{
-		return view('audit.check_list');
+		$user_id = session('user_id');
+		if($user_id)return view('audit.check_list');
+		return redirect("/");
 	}
 
 	public function fetch()

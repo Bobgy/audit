@@ -16,6 +16,7 @@
 Route::get('home', 'HomeController@index');
 
 Route::get('/', 'PageController@index');
+Route::get('show', 'PageController@showProfile');
 //Route::get('check', 'PageController@check');
 Route::get('check_list', 'PageController@check_list');
 Route::get('fetch', 'PageController@fetch');
