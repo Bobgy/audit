@@ -1,4 +1,4 @@
-### Instructions on deploying this project on WAMP
+### Instructions for deploying this project on WAMP
 
 ## Installation
 
