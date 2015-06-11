@@ -1,14 +1,35 @@
-@extends('audit.navbar')
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-@section('head')
-<link href="{{ asset('/lib/Flat-UI-master/dist/css/flat-ui.css') }}" rel="stylesheet">
-@endsection
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS -->
+  <link href="{{ asset('/lib/Flat-UI-master/dist/css/vendor/bootstrap.min.css') }}" rel="stylesheet">
 
-@section('content')
+  <!-- Flat UI -->
+  <link href="{{ asset('/lib/css/my.css') }}" rel="stylesheet">
+
+  <!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet"> -->
+
+  <!-- Fonts -->
+  <!-- link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> -->
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <link href="{{ asset('/lib/Flat-UI-master/dist/css/flat-ui.css') }}" rel="stylesheet">
+
+</head>
   <body>
     <!-- Header space -->
-	  <div style="height: 60px;"></div>
-	  <!-- Main container -->
+    <div style="height: 60px;"></div>
+    <!-- Main container -->
     <div class="container">
       <div class="row">
         <div class="logInForm">
@@ -36,4 +57,3 @@
       </div>
     </div>
   </body>
-@endsection
