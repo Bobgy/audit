@@ -13,6 +13,11 @@ class AuthMiddleware {
 	 */
 	public function handle($request, Closure $next)
 	{
+
+		if (is_null(session('user_id')))
+        {
+            return redirect('/');
+        }
 		return $next($request);
 	}
 

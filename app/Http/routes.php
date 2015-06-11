@@ -16,16 +16,16 @@
 Route::get('home', 'HomeController@index');
 
 Route::get('/', 'PageController@index');
-Route::get('show', 'PageController@showProfile');
-//Route::get('check', 'PageController@check');
-Route::get('check_list', 'PageController@check_list');
-Route::get('fetch', 'PageController@fetch');
-Route::get('main', 'PageController@main');
 Route::get('register', 'PageController@register');
-Route::get('search', 'PageController@search');
-Route::post('login', 'PageController@postLogin');
 Route::get('login', 'PageController@getLogin');
 Route::get('logout', 'PageController@getLogout');
+Route::post('login', 'PageController@postLogin');
+
+Route::get('show', ['middleware' => 'auth', 'uses' => 'PageController@showProfile']);
+Route::get('check_list', ['middleware' => 'auth', 'uses' => 'PageController@check_list']);
+Route::get('fetch', ['middleware' => 'auth', 'uses' => 'PageController@fetch']);
+Route::get('main', ['middleware' => 'auth', 'uses' => 'PageController@main']);
+Route::get('search', ['middleware' => 'auth', 'uses' => 'PageController@search']);
 
 Route::resource('check', 'CheckController');
 
