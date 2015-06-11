@@ -32,14 +32,14 @@ class PageController extends Controller {
 
 		$true_password = ManagerInfo::find($user_id)['password'];
 
-		if ($password == $true_password) {
+		if ($password == $true_password && !is_null($true_password)) {
 			session(['user_id' => $user_id]);
 			return redirect('main');
 		}
 
 		session()->forget('user_id');
 
-   	return back()->withInput();
+   	return redirect('/');
   }
 
   // 登出操作
@@ -54,8 +54,7 @@ class PageController extends Controller {
 	{
 		$password = $request->input('inputPassword');
 		if ($password) return $password;
-		$user_id = "";
-		return view('audit.index', compact('user_id'));
+		return view('audit.index');
 	}
 
 	public function check()
@@ -80,7 +79,6 @@ class PageController extends Controller {
 	public function main()
 	{
 		$user_id = session('user_id');
-		//if (is_null($user_id)) return redirect('/');
 		$real_name = ManagerInfo::find($user_id)['real_name'];
 		$id_card = ManagerInfo::find($user_id)['id_card'];
 		return view('audit.main', compact('user_id','real_name','id_card'));

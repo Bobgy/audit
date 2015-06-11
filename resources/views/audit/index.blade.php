@@ -43,7 +43,8 @@
                 <input type="password" class="form-control input-lg" style="width:290px;" name="_inputPassword" id="inputPassword" placeholder="Password">
               </div>
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="submit" name="_loginBtn" value="登陆" class="btn btn-lg btn-wide btn-primary">
+              <input type="reset" name="_regBtn" value="重置" class="btn btn-lg btn-wide btn-info">
+              <input type="submit" name="_loginBtn" value="登陆" class="btn btn-lg btn-wide btn-success">
             </form>
             <div style="margin-left: 10px">
               <a href="fetch" >忘记密码?</a>
