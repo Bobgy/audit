@@ -29,7 +29,7 @@ INSERT INTO `audit`.`bills`
 (`bill_id`, `seller_id`, `buyer_id`, `commodity_name`, `amount`, `date`)
 VALUES (?, ?, ?, ?, ?, '2015-06-11 00:00:00');
 COMMAND;
-    for ($i = 0; $i < 100; $i ++){
+    for ($i = 1; $i < 100; $i ++){
       DB::insert($str, [$i,$i,$i,$i,$i]);
     }
   }

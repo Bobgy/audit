@@ -47,7 +47,8 @@ class PageController extends Controller {
 	{
 		$password = $request->input('inputPassword');
 		if ($password) return $password;
-		return view('audit.index');
+		$user_id = "";
+		return view('audit.index', compact('user_id'));
 	}
 
 	public function check()
@@ -58,7 +59,8 @@ class PageController extends Controller {
 	public function check_list()
 	{
 		if (!session()->has('user_id')) return redirect('/');
-		return view('audit.check_list');
+		$user_id = session('user_id');
+		return view('audit.check_list', compact('user_id'));
 	}
 
 	public function fetch()
@@ -68,7 +70,10 @@ class PageController extends Controller {
 
 	public function main()
 	{
-		return view('audit.main');
+		$user_id = session('user_id');
+		$real_name = ManagerInfo::find($user_id)['real_name'];
+		$id_card = ManagerInfo::find($user_id)['id_card'];
+		return view('audit.main', compact('user_id','real_name','id_card'));
 	}
 
 	public function register()

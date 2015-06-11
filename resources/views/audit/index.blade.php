@@ -13,7 +13,7 @@
       <div class="row">
         <div class="logInForm">
           <div class="col-md-12" style="width:320px;" >
-            <form  action="login" method="post" id="logInForm" role="form">
+            <form action="login" method="post" id="logInForm" role="form">
               <legend>登陆</legend>
               <div class="form-group">
                 <input type="text" class="form-control input-lg" style="width:290px;" name="_inputAccount" id="inputAccount" placeholder="Account">

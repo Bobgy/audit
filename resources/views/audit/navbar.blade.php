@@ -30,12 +30,12 @@
 	<nav class="my_navbar">
 		<div class="top">
 			<div class="header">
-				<a href="./check_list"> 账单 </a>
+				<a href="/audit/check_list"> 账单 </a>
 				<a> 导出 </a>
-				<a href="./search"> 搜索 </a>
+				<a href="/audit/search"> 搜索 </a>
 			</div>
 			<div id="user" class="ender">
-				<a> Chaiyujin </a>
+				<a> {{$user_id}} </a>
 			</div>
 			<div id="hidden_menu" class="hiddenMenu">
 				<li id="log_out"> 注销 </li>

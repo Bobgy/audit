@@ -28,10 +28,10 @@
                 <div class="avatar"></div>
                 <div class="content">
                   <div id="user_real_name" class="content_row">
-                    柴宇进
+                
                   </div>
                   <div id="user_id" class="content_row">
-                    3120000011
+                    
                   </div>
                   <div class="crossLine"></div>
                   <div id="user_kpi" class="content_row" style="color: #FF0000">
@@ -39,6 +39,7 @@
                   </div>
                 </div>
               </div>
+
               <div class="column_6">
                 <div class="content">
                   <div id="processed" class="content_row">
@@ -106,9 +107,10 @@
 </script>
 
 <!-- 以下请添加后端得到的数据 -->
+
 <script>
-  $("#user_real_name").html("魔理沙");
-  $("#user_id").html("4130009");
+  $("#user_real_name").html("{{$real_name}}");
+  $("#user_id").html("{{$id_card}}");
   $("#user_kpi").html("绩效: 5.0");
 
   $("#processed").html("处理订单: 1200");
