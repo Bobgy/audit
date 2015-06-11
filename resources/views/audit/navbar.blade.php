@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,6 +28,7 @@
 </head>
 <body>
 	<!-- Nav bar Begin -->
+
 	<nav class="my_navbar">
 		<div class="top">
 			<div class="header">
@@ -38,6 +40,7 @@
 				<a> {{$user_id}} </a>
 			</div>
 			<div id="hidden_menu" class="hiddenMenu">
+				<li id="my_homepage"> 个人主页 </li>
 				<li id="log_out"> 注销 </li>
 			</div>
 		</div>
@@ -59,6 +62,30 @@
 	    will_shown = true;
 	    $('#hidden_menu').show(300);
 	  });
+	  $('#my_homepage').mouseover(function () {
+	    will_shown = true;
+	    $('#hidden_menu').show(300);
+	  });
+	  $('#my_homepage').mouseout(function () {
+	    will_shown = false;
+	    setTimeout(function () {
+	      if (!is_shown) {
+	        $('#hidden_menu').hide(300);
+	      }
+	    }, 100);
+	  });
+	  $('#log_out').mouseover(function () {
+	    will_shown = true;
+	    $('#hidden_menu').show(300);
+	  });
+	  $('#log_out').mouseout(function () {
+	    will_shown = false;
+	    setTimeout(function () {
+	      if (!is_shown) {
+	        $('#hidden_menu').hide(300);
+	      }
+	    }, 100);
+	  });
 	  $('#user').mouseout(function () {
 	    will_shown = false;
 	    setTimeout(function () {
@@ -78,10 +105,13 @@
 	      }
 	    }, 100);
 	  });
-
+	  // 个人主页
+	  $("#my_homepage").click(function () {
+	  	self.location='/audit/main';
+	  });
 	  // 登出
 	  $("#log_out").click(function () {
-	    // 请添加登出函数
+	    self.location='/audit/logout';
 	  });
 	</script>
 

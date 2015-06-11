@@ -17,7 +17,8 @@ class CheckController extends Controller {
 	public function index()
 	{
 		$id = 1;
-		return view('audit.check', compact('id'));
+		$user_id = session('user_id');
+		return view('audit.check', compact('id', 'user_id'));
 	}
 
 	/**
@@ -49,7 +50,8 @@ class CheckController extends Controller {
 	public function show($id)
 	{
 		$bill = Bill::where('bill_id', $id)->get()[0];
-		return view('audit.check', compact('id', 'bill'));
+		$user_id = session('user_id');
+		return view('audit.check', compact('id', 'bill', 'user_id'));
 	}
 
 	/**

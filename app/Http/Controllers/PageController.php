@@ -42,6 +42,13 @@ class PageController extends Controller {
    	return back()->withInput();
   }
 
+  // 登出操作
+  public function getLogout()
+  {
+  	session()->forget('user_id');
+  	return redirect('/');
+  }
+
 	//
 	public function index(Request $request)
 	{
@@ -53,7 +60,8 @@ class PageController extends Controller {
 
 	public function check()
 	{
-		return view('audit.check');
+		$user_id = session('user_id');
+		return view('audit.check', compact('user_id'));
 	}
 
 	public function check_list()
@@ -65,7 +73,8 @@ class PageController extends Controller {
 
 	public function fetch()
 	{
-		return view('audit.fetch');
+		$user_id = session('user_id');
+		return view('audit.fetch', compact('user_id'));
 	}
 
 	public function main()
@@ -83,6 +92,7 @@ class PageController extends Controller {
 
 	public function search()
 	{
-		return view('audit.search');
+		$user_id = session('user_id');
+		return view('audit.search', compact('user_id'));
 	}
 }

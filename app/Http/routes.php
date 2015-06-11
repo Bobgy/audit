@@ -25,6 +25,7 @@ Route::get('register', 'PageController@register');
 Route::get('search', 'PageController@search');
 Route::post('login', 'PageController@postLogin');
 Route::get('login', 'PageController@getLogin');
+Route::get('logout', 'PageController@getLogout');
 
 Route::resource('check', 'CheckController');
 
