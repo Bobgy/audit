@@ -28,10 +28,10 @@
                 <div class="avatar"></div>
                 <div class="content">
                   <div id="user_real_name" class="content_row">
-                
+
                   </div>
                   <div id="user_id" class="content_row">
-                    
+
                   </div>
                   <div class="crossLine"></div>
                   <div id="user_kpi" class="content_row" style="color: #FF0000">
@@ -101,8 +101,7 @@
     $('#change_pwd').hide();
   });
   $('#change_pwd_btn').click(function () {
-    $('#profile').hide();
-    $('#change_pwd').show();
+    self.location = '/audit/fetch'
   });
 </script>
 
@@ -110,7 +109,7 @@
 
 <script>
   $("#user_real_name").html("{{$real_name}}");
-  $("#user_id").html("{{$id_card}}");
+  $("#user_id").html("{{$user_id}}");
   $("#user_kpi").html("绩效: 5.0");
 
   $("#processed").html("处理订单: 1200");

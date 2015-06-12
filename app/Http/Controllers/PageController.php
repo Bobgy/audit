@@ -8,12 +8,6 @@ use App\ManagerInfo;
 
 class PageController extends Controller {
 
-	public function showProfile(Request $request)
-	{
-		//$value = $request->session()->get('key');
-		return $request->session()->all();
-		//
-	}
 	public function __construct()
 	{
 		$this->middleware('guest');
@@ -59,29 +53,25 @@ class PageController extends Controller {
 
 	public function check()
 	{
-		$user_id = session('user_id');
-		return view('audit.check', compact('user_id'));
+		return view('audit.check');
 	}
 
 	public function check_list()
 	{
-		if (!session()->has('user_id')) return redirect('/');
-		$user_id = session('user_id');
-		return view('audit.check_list', compact('user_id'));
+		return view('audit.check_list');
 	}
 
 	public function fetch()
 	{
-		$user_id = session('user_id');
-		return view('audit.fetch', compact('user_id'));
+		return view('audit.fetch');
 	}
 
 	public function main()
 	{
 		$user_id = session('user_id');
-		$real_name = ManagerInfo::find($user_id)['real_name'];
-		$id_card = ManagerInfo::find($user_id)['id_card'];
-		return view('audit.main', compact('user_id','real_name','id_card'));
+		$manager = ManagerInfo::find($user_id);
+		$real_name = $manager['real_name'];
+		return view('audit.main', compact('user_id','real_name'));
 	}
 
 	public function register()
@@ -91,7 +81,6 @@ class PageController extends Controller {
 
 	public function search()
 	{
-		$user_id = session('user_id');
-		return view('audit.search', compact('user_id'));
+		return view('audit.search');
 	}
 }

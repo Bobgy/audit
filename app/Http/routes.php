@@ -21,7 +21,6 @@ Route::get('login', 'PageController@getLogin');
 Route::get('logout', 'PageController@getLogout');
 Route::post('login', 'PageController@postLogin');
 
-Route::get('show', ['middleware' => 'auth', 'uses' => 'PageController@showProfile']);
 Route::get('check_list', ['middleware' => 'auth', 'uses' => 'PageController@check_list']);
 Route::get('fetch', ['middleware' => 'auth', 'uses' => 'PageController@fetch']);
 Route::get('main', ['middleware' => 'auth', 'uses' => 'PageController@main']);

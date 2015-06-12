@@ -37,7 +37,7 @@
 				<a href="/audit/search"> 搜索 </a>
 			</div>
 			<div id="user" class="ender">
-				<a> {{$user_id}} </a>
+				<a> {{session('user_id')}} </a>
 			</div>
 			<div id="hidden_menu" class="hiddenMenu">
 				<li id="my_homepage"> 个人主页 </li>
