@@ -46,9 +46,6 @@
               <input type="reset" name="_regBtn" value="重置" class="btn btn-lg btn-wide btn-info">
               <input type="submit" name="_loginBtn" value="登陆" class="btn btn-lg btn-wide btn-success">
             </form>
-            <div style="margin-left: 10px">
-              <a href="fetch" >忘记密码?</a>
-            </div>
           </div>
         </div>
         <div class="logInPic">
