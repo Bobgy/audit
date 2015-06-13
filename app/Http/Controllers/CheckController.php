@@ -16,9 +16,7 @@ class CheckController extends Controller {
 	 */
 	public function index()
 	{
-		$id = 1;
-		$user_id = session('user_id');
-		return view('audit.check', compact('id', 'user_id'));
+		//
 	}
 
 	/**

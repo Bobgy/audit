@@ -9,9 +9,9 @@ class PageController extends Controller {
     $this->middleware('guest');
   }
   public function getLogin()
-    {
-        return view('audit.index');
-    }
+  {
+      return view('audit.index');
+  }
    // 登录操作
   public function postLogin(Request $request)
   {
@@ -23,8 +23,8 @@ class PageController extends Controller {
       return redirect('main');
     }
     session()->forget('user_id');
-       return redirect('/');
-    }
+    return redirect('/');
+  }
   // 登出操作
   public function getLogout()
   {
@@ -51,6 +51,9 @@ class PageController extends Controller {
   public function check_list_history()
   {
     return view('audit.check_list_history');
+  }
+  public function check_list_error(){
+    return view('audit.check_list_error');
   }
   public function fetch()
   {

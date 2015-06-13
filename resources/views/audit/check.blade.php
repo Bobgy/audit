@@ -12,7 +12,7 @@
       <div class="row">
         <div class="flowColumn2">
           <div class="select">
-            <a id="pass_btn"> 通过 </a>
+            <a id="pass_btn" action="haha"> 通过 </a>
             <div class="crossLine"></div>
             <a id="error_btn"> 报错 </a>
             <div class="crossLine"></div>
@@ -52,32 +52,17 @@
             </div>
             <div class="crossLine"></div>
 
-            <!-- 物品单价 -->
+            <!-- 总金额 -->
             <div class="title">
               <div class="head"></div>
               <div class="text">
-                物品单价
+                总金额
               </div>
             </div>
             <div class="crossLine9"></div>
             <div class="subrow">
               <div class="content_row">
-                100
-              </div>
-            </div>
-            <div class="crossLine"></div>
-
-            <!-- 个数 -->
-            <div class="title">
-              <div class="head"></div>
-              <div class="text">
-                交易个数
-              </div>
-            </div>
-            <div class="crossLine9"></div>
-            <div class="subrow">
-              <div class="content_row">
-                1
+                {{$bill->amount}}
               </div>
             </div>
 
@@ -128,21 +113,6 @@
             <div class="subrow">
               <div class="content_row">
                 {{$bill->date}}
-              </div>
-            </div>
-            <div class="crossLine"></div>
-
-            <!-- 总金额 -->
-            <div class="title">
-              <div class="head"></div>
-              <div class="text">
-                总金额
-              </div>
-            </div>
-            <div class="crossLine9"></div>
-            <div class="subrow">
-              <div class="content_row">
-                {{$bill->amount}}
               </div>
             </div>
 
