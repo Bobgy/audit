@@ -22,6 +22,7 @@ Route::get('check_list_double', ['middleware' => 'auth', 'uses' => 'PageControll
 Route::get('check_list_history', ['middleware' => 'auth', 'uses' => 'PageController@check_list_history']);
 
 Route::get('fetch', ['middleware' => 'auth', 'uses' => 'PageController@fetch']);
+Route::post('fetch', ['middleware' => 'auth', 'uses' => 'PageController@resetPassword']);
 Route::get('main', ['middleware' => 'auth', 'uses' => 'PageController@main']);
 Route::get('search', ['middleware' => 'auth', 'uses' => 'PageController@search']);
 

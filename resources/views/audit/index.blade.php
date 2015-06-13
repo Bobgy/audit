@@ -26,34 +26,34 @@
   <link href="{{ asset('/lib/Flat-UI-master/dist/css/flat-ui.css') }}" rel="stylesheet">
 
 </head>
-  <body>
-    <!-- Header space -->
-    <div style="height: 60px;"></div>
-    <!-- Main container -->
-    <div class="container">
-      <div class="row">
-        <div class="logInForm">
-          <div class="col-md-12" style="width:320px;" >
-            <form action="login" method="post" id="logInForm" role="form">
-              <legend>登陆</legend>
-              <div class="form-group">
-                <input type="text" class="form-control input-lg" style="width:290px;" name="_inputAccount" id="inputAccount" placeholder="Account">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" style="width:290px;" name="_inputPassword" id="inputPassword" placeholder="Password">
-              </div>
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="reset" name="_regBtn" value="重置" class="btn btn-lg btn-wide btn-info">
-              <input type="submit" name="_loginBtn" value="登陆" class="btn btn-lg btn-wide btn-success">
-            </form>
-          </div>
-        </div>
-        <div class="logInPic">
-          <iframe height="490px" width="800px" frameborder="0" marginheight="0px" marginwidth="0px" scrolling="no" src="{{ asset('/res/nico.jpg') }}">
-          </iframe>
+<body>
+  <!-- Header space -->
+  <div style="height: 60px;"></div>
+  <!-- Main container -->
+  <div class="container">
+    <div class="row">
+      <div class="logInForm">
+        <div class="col-md-12" style="width:320px;" >
+          <form action="login" method="post" id="logInForm" role="form">
+            <legend>登陆</legend>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" style="width:290px;" name="_inputAccount" id="inputAccount" placeholder="Account">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" style="width:290px;" name="_inputPassword" id="inputPassword" placeholder="Password">
+            </div>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="reset" name="_regBtn" value="重置" class="btn btn-lg btn-wide btn-info">
+            <input type="submit" name="_loginBtn" value="登陆" class="btn btn-lg btn-wide btn-success">
+          </form>
         </div>
       </div>
+      <div class="logInPic">
+        <iframe height="490px" width="800px" frameborder="0" marginheight="0px" marginwidth="0px" scrolling="no" src="{{ asset('/res/nico.jpg') }}">
+        </iframe>
+      </div>
     </div>
-    <nav class="my_navbar">
-  </nav>
-  </body>
+  </div>
+  <nav class="my_navbar">
+</nav>
+</body>
