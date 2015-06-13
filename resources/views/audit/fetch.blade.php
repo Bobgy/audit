@@ -13,18 +13,15 @@
         <div class="logInForm">
           <div class="col-md-12" style="width:320px;" >
             <form id="resetForm" role="form">
-              <legend>重置密码</legend>
+              <legend>修改密码</legend>
               <div class="form-group">
-                <input type="text" class="form-control input-lg" style="width:290px;" id="resetAccount" placeholder="Account">
+                <input type="password" class="form-control input-lg" style="width:290px;" id="oldPassword" name="oldPassword" placeholder="Old password">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control input-lg" style="width:290px;" id="resetID" placeholder="ID code">
+                <input type="password" class="form-control input-lg" style="width:290px;"  id="newPassword" name="newPassword" placeholder="New password">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control input-lg" style="width:290px;"  id="resetPassword" placeholder="New password">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" style="width:290px;"  id="confirmPassword" placeholder="Confirm password">
+                <input type="password" class="form-control input-lg" style="width:290px;"  id="confirmPassword" name="confirmPassword" placeholder="Confirm password">
               </div>
               <input type="submit" name="_loginBtn" value="修改" class="btn btn-lg btn-wide btn-primary">
             </form>
