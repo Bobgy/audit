@@ -14,8 +14,12 @@ class CreateAuditInfosTable extends Migration {
 	{
 		Schema::create('audit_infos', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
+			$table->string('audit_id', 30);
+			$table->string('bill_id', 30);
+			$table->string('auditor_id', 30);
+			$table->dateTime('date');
+			$table->integer('action'); // 1->pass, 0->not pass
+			$table->string('comment', 120);
 		});
 	}
 
