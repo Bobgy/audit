@@ -42,43 +42,85 @@ class CheckController extends Controller {
 
 	/**
 	 * Display the specified resource.
-	 * @param  int  $id
+	 * @param	int	$id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		$bill = Bill::where('bill_id', $id)->get()[0];
-		$user_id = session('user_id');
-		return view('audit.check', compact('id', 'bill', 'user_id'));
+		$bill = Bill::find($id);
+		$state = AuditInfo::getFormattedState($id);
+		return view('audit.check', compact('id', 'bill', 'state'));
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  Request $request
-	 * @param  int  $id
+	 * @param	Request $request
+	 * @param	int	$id
 	 * @return Response
 	 */
 	public function edit(Request $request, $id)
 	{
 		if ($request->has('pass')) {
-			return CheckController::pass($id);
+			return $this->pass($id);
+		} else if ($request->has('error')) {
+			return $this->error($id);
 		}
-		return 'no';
+		return $this->show($id);
 	}
 
 	private function pass($id)
 	{
-		$rec = AuditInfo::where('bill_id', $id)
-		                ->orderBy('date', 'desc')
-										->first();
-		return $rec.'haha';
+		$prevStat = AuditInfo::getState($id);
+		$audit = new AuditInfo;
+		switch ($prevStat) {
+			case 0: case 1:
+				$audit->action = $rec->action + 1;
+				break;
+			default:
+				$errorMessage = '错误: 无效的操作';
+				return $this->showWithError($id, $errorMessage);
+		}
+		$audit->bill_id = $id;
+		$audit->auditor_id = session('user_id');
+		date_default_timezone_set('Asia/Shanghai');
+		$audit->date = date("Y-m-d H:i:s");
+		# $audit->comment = something;
+		$audit->save();
+		return $this->show($id);
+	}
+
+	private function error($id)
+	{
+		$prevStat = AuditInfo::getState($id);
+		$audit = new AuditInfo;
+		switch ($prevStat) {
+			case 0: case 1: case 2:
+				$audit->action = 3;
+				break;
+			default:
+				$errorMessage = '错误: 无效的操作';
+				return $this->showWithError($id, $errorMessage);
+		}
+		$audit->bill_id = $id;
+		$audit->auditor_id = session('user_id');
+		date_default_timezone_set('Asia/Shanghai');
+		$audit->date = date("Y-m-d H:i:s");
+		# $audit->comment = something;
+		$audit->save();
+		return $this->show($id);
+	}
+
+	private function showWithError($id, $errorMessage) {
+		$bill = Bill::find($id);
+		$state = AuditInfo::getFormattedState($id);
+		return view('audit.check', compact('errorMessage', 'id', 'bill', 'state'));
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param	int	$id
 	 * @return Response
 	 */
 	public function update($id)
@@ -89,7 +131,7 @@ class CheckController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param	int	$id
 	 * @return Response
 	 */
 	public function destroy($id)

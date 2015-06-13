@@ -10,7 +10,6 @@
 
 	<!-- Flat UI -->
 	<link href="{{ asset('/lib/css/my.css') }}" rel="stylesheet">
-
 	<!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet"> -->
 
 	<!-- Fonts -->
@@ -27,8 +26,8 @@
 
 </head>
 <body>
-	<!-- Nav bar Begin -->
 
+	<!-- Nav bar Begin -->
 	<nav class="my_navbar">
 		<div class="top">
 			<div class="header">
@@ -49,69 +48,73 @@
 
 	@yield('content')
 
+	@if (isset($errorMessage))
+		<a> {{ $errorMessage }} </a>
+	@endif
+
 	<!-- Scripts -->
 	<script src="{{ asset('/lib/Flat-UI-master/dist/js/vendor/jquery.min.js') }}"></script>
 	<!-- 用户的悬浮菜单 -->
 	<script>
-	  // 控制隐藏菜单
-	  var is_shown = false;
-	  var will_shown = false;
-	  $('#hidden_menu').hide();
-	  $('#user').mouseover(function () {
-	    will_shown = true;
-	    $('#hidden_menu').show(300);
-	  });
-	  $('#my_homepage').mouseover(function () {
-	    will_shown = true;
-	    $('#hidden_menu').show(300);
-	  });
-	  $('#my_homepage').mouseout(function () {
-	    will_shown = false;
-	    setTimeout(function () {
-	      if (!is_shown) {
-	        $('#hidden_menu').hide(300);
-	      }
-	    }, 100);
-	  });
-	  $('#log_out').mouseover(function () {
-	    will_shown = true;
-	    $('#hidden_menu').show(300);
-	  });
-	  $('#log_out').mouseout(function () {
-	    will_shown = false;
-	    setTimeout(function () {
-	      if (!is_shown) {
-	        $('#hidden_menu').hide(300);
-	      }
-	    }, 100);
-	  });
-	  $('#user').mouseout(function () {
-	    will_shown = false;
-	    setTimeout(function () {
-	      if (!is_shown) {
-	        $('#hidden_menu').hide(300);
-	      }
-	    }, 100);
-	  });
-	  $('#hidden_menu').mouseover(function () {
-	    is_shown = true;
-	  });
-	  $('#hidden_menu').mouseout(function () {
-	    is_shown = false;
-	    setTimeout(function () {
-	      if (!will_shown) {
-	        $('#hidden_menu').hide(300);
-	      }
-	    }, 100);
-	  });
-	  // 个人主页
-	  $("#my_homepage").click(function () {
-	  	self.location='/audit/main';
-	  });
-	  // 登出
-	  $("#log_out").click(function () {
-	    self.location='/audit/logout';
-	  });
+		// 控制隐藏菜单
+		var is_shown = false;
+		var will_shown = false;
+		$('#hidden_menu').hide();
+		$('#user').mouseover(function () {
+			will_shown = true;
+			$('#hidden_menu').show(300);
+		});
+		$('#my_homepage').mouseover(function () {
+			will_shown = true;
+			$('#hidden_menu').show(300);
+		});
+		$('#my_homepage').mouseout(function () {
+			will_shown = false;
+			setTimeout(function () {
+				if (!is_shown) {
+					$('#hidden_menu').hide(300);
+				}
+			}, 100);
+		});
+		$('#log_out').mouseover(function () {
+			will_shown = true;
+			$('#hidden_menu').show(300);
+		});
+		$('#log_out').mouseout(function () {
+			will_shown = false;
+			setTimeout(function () {
+				if (!is_shown) {
+					$('#hidden_menu').hide(300);
+				}
+			}, 100);
+		});
+		$('#user').mouseout(function () {
+			will_shown = false;
+			setTimeout(function () {
+				if (!is_shown) {
+					$('#hidden_menu').hide(300);
+				}
+			}, 100);
+		});
+		$('#hidden_menu').mouseover(function () {
+			is_shown = true;
+		});
+		$('#hidden_menu').mouseout(function () {
+			is_shown = false;
+			setTimeout(function () {
+				if (!will_shown) {
+					$('#hidden_menu').hide(300);
+				}
+			}, 100);
+		});
+		// 个人主页
+		$("#my_homepage").click(function () {
+			self.location='/audit/main';
+		});
+		// 登出
+		$("#log_out").click(function () {
+			self.location='/audit/logout';
+		});
 	</script>
 
 	@yield('script')

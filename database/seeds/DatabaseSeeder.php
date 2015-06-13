@@ -33,7 +33,7 @@ COMMAND;
       DB::insert($str, [$i,$i,$i,$i,$i]);
     }
   }
-
+	
 }
 
 class AuditInfoTableSeeder extends Seeder {

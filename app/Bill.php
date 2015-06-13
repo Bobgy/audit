@@ -3,8 +3,8 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Bill extends Model {
-	
-	protected $primaryKey = 'user_id';
+
+	protected $primaryKey = 'bill_id';
 
 	public $timestamps = false;
 

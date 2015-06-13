@@ -9,9 +9,6 @@
     <div style="height: 60px;"></div>
     <!-- Main container -->
     <div class="container">
-      @if (isset($errorMessage))
-        {{$errorMessage}}
-      @endif
       <div class="row">
         <div class="logInForm">
           <div class="col-md-12" style="width:320px;" >
