@@ -18,8 +18,10 @@ class CreateAuditInfosTable extends Migration {
 			$table->string('bill_id', 30);
 			$table->string('auditor_id', 30);
 			$table->dateTime('date');
-			$table->integer('action'); // 1->pass, 0->not pass
-			$table->string('comment', 120);
+			$table->string('comment', 140);
+
+			// 0->unprocessed, 1->double_check, 2->pass, 3->error
+			$table->integer('action');
 		});
 	}
 

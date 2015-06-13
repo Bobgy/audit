@@ -76,7 +76,7 @@ class PageController extends Controller {
     return view('audit.index');
   }
 
-  public function main()
+  public function main(Request $request)
   {
     $user_id = session('user_id');
     $manager = ManagerInfo::find($user_id);
