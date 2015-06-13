@@ -38,7 +38,7 @@
 	height: 40px;
 	line-height:40px;
 	width: 120px;
-	
+
 	font-size: 16px;
 	color: #2B9C4F;
 	font-family: Microsoft YaHei;
@@ -89,7 +89,7 @@
 .my_navbar .top .hiddenMenu li:hover{
 	color: #E7E7E7;
 	background-color: #2B9C4F;
-	
+
 	transition: all 1s;
 }
 
@@ -102,13 +102,13 @@
 	height: 40px;
 	line-height:40px;
 	width: 120px;
-	
+
 	font-size: 16px;
 	color: #2B9C4F;
 	font-family: Microsoft YaHei;
 
 	cursor: pointer;
-	
+
 	transition: all 1s;
 }
 
@@ -234,7 +234,7 @@ div.tab .title {
 div.tab .title .head {
 	float: left;
 	position: relative;
-	top: 11px;	
+	top: 11px;
 	left: 6px;
   	display: block;
   	height: 8px;
@@ -444,7 +444,7 @@ padding:3px 4px;
 #pagination-flickr .previous a {
 font-weight:bold;
 border:solid 1px #FFFFFF;
-} 
+}
 #pagination-flickr .active{
 color:#ff0084;
 font-weight:bold;
@@ -464,13 +464,24 @@ text-decoration:none;
 border:solid 1px #666666;
 }
 
+div.flowColumn2 .select input{
+	cursor: pointer;
+	text-align: center;
+	vertical-align: middle;
+	display: block;
+	height: 40px;
+	width: 100%;
+	line-height: 40px;
+	color: #606060;
+	background-color:  #E7E7E7;
+	font-family: Microsoft JhengHei ;
+	font-size: 16px;
+	border: 0px;
 
+}
 
-
-
-
-
-
-
-
-
+div.flowColumn2 .select input:hover{
+	text-decoration: none;
+	color: #2B9C4F;
+	background-color: #C7C7C7;
+}

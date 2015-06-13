@@ -12,9 +12,9 @@ class CreateAuditInfosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('audit_infos', function(Blueprint $table)
+		Schema::create('audit_info', function(Blueprint $table)
 		{
-			$table->string('audit_id', 30);
+			$table->increments('audit_id');
 			$table->string('bill_id', 30);
 			$table->string('auditor_id', 30);
 			$table->dateTime('date');
@@ -32,7 +32,7 @@ class CreateAuditInfosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('audit_infos');
+		Schema::drop('audit_info');
 	}
 
 }

@@ -12,11 +12,14 @@
       <div class="row">
         <div class="flowColumn2">
           <div class="select">
-            <a id="pass_btn" action="haha"> 通过 </a>
-            <div class="crossLine"></div>
-            <a id="error_btn"> 报错 </a>
-            <div class="crossLine"></div>
-            <a id="back_btn"> 返回 </a>
+            <form method="post">
+              <input type="submit" value="通过" id="pass_btn" name="pass" />
+              <div class="crossLine"></div>
+              <input type="submit" value="报错" id="error_btn" name="error" />
+              <div class="crossLine"></div>
+              <input type="submit" value="返回" id="back_btn" name="back" />
+              <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            </form>
           </div>
         </div>
         <!-- 显示内容 -->

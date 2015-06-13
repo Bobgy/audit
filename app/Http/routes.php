@@ -27,3 +27,4 @@ Route::get('main', 'PageController@main');
 Route::get('search', 'PageController@search');
 
 Route::resource('check', 'CheckController');
+Route::post('check/{check}', 'CheckController@edit');

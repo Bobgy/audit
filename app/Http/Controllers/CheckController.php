@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Bill;
+use App\AuditInfo;
 
 class CheckController extends Controller {
 
@@ -41,7 +42,6 @@ class CheckController extends Controller {
 
 	/**
 	 * Display the specified resource.
-	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
@@ -55,12 +55,24 @@ class CheckController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
+	 * @param  Request $request
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Request $request, $id)
 	{
-		//
+		if ($request->has('pass')) {
+			return CheckController::pass($id);
+		}
+		return 'no';
+	}
+
+	private function pass($id)
+	{
+		$rec = AuditInfo::where('bill_id', $id)
+		                ->orderBy('date', 'desc')
+										->first();
+		return $rec.'haha';
 	}
 
 	/**
