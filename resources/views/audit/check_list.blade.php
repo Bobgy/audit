@@ -7,11 +7,13 @@
     <!-- Main container Begin-->
     <div class="container">
       <div class="row">
-        <div class="flowColumn2">
-          <div class="select">
+        <div class="flowColumn2">		
+		  <div class="select">	
             <a href="check_list" id="unprocessed_check_btn"> 未处理账单 </a>
             <div class="crossLine"></div>
             <a href="check_list_double" id="double_check_btn"> 二次审核 </a>
+			<div class="crossLine"></div>
+            <a href="check_list_error" id="error_btn"> 异常账单 </a>
             <div class="crossLine"></div>
             <a href="check_list_history" id="history_btn"> 历史 </a>
           </div>
@@ -48,10 +50,10 @@
                     </div>
                     <div class="crossLine"></div>
                     <div class="content_row blue_context">
-                      单价: 100.00
+                      总价: 100.00
                     </div>
                     <div class="content_row blue_context">
-                      数量: 2
+                      状态: 未处理
                     </div>
                   </div>
                 </div>
@@ -82,11 +84,11 @@
                       交易时间: 100000000
                     </div>
                     <div class="crossLine"></div>
-                    <div class="content_row blue_context">
-                      单价: 100.00
+                   <div class="content_row blue_context">
+                      总价: 200.00
                     </div>
                     <div class="content_row blue_context">
-                      数量: 2
+                      状态: 未处理
                     </div>
                   </div>
                 </div>
