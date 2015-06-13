@@ -9,10 +9,10 @@ class PageController extends Controller {
     $this->middleware('guest');
   }
   public function getLogin()
-  {
-      return view('audit.index');
-  }
-  // 登录操作
+    {
+        return view('audit.index');
+    }
+   // 登录操作
   public function postLogin(Request $request)
   {
     $user_id = $request->get('_inputAccount');
@@ -22,15 +22,15 @@ class PageController extends Controller {
       session(['user_id' => $user_id]);
       return redirect('main');
     }
-    return view('audit.index');
-  }
+    session()->forget('user_id');
+       return redirect('/');
+    }
   // 登出操作
   public function getLogout()
   {
       session()->forget('user_id');
       return redirect('/');
   }
-  //
   public function index(Request $request)
   {
     if (session('user_id')!=NULL) return redirect('main');

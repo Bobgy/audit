@@ -51,7 +51,6 @@
 
 	<!-- Scripts -->
 	<script src="{{ asset('/lib/Flat-UI-master/dist/js/vendor/jquery.min.js') }}"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<!-- 用户的悬浮菜单 -->
 	<script>
 	  // 控制隐藏菜单

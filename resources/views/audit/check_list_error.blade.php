@@ -53,42 +53,7 @@
                       总价: 100.00
                     </div>
                     <div class="content_row blue_context">
-                      状态: 未处理
-                    </div>
-                  </div>
-                </div>
-                <div class="column_2_noborder">
-                  <div class="big_btn">
-                    <input type="submit" value="审核"></input>
-                  </div>
-                </div>
-              </form>
-              <div class="crossLine"></div>
-              <!-- one record end-->
-
-              <!-- one record -->
-              <form class="record">
-                <div class="column_8_noborder">
-                  <div class="content_full">
-                    <div class="content_full_row blue_context">
-                      订单号: 100000
-                    </div>
-                    <div class="crossLine"></div>
-                    <div class="content_row">
-                      买家: 100000000
-                    </div>
-                    <div class="content_row">
-                      卖家: 100000000
-                    </div>
-                    <div class="content_row blue_context">
-                      交易时间: 100000000
-                    </div>
-                    <div class="crossLine"></div>
-                   <div class="content_row blue_context">
-                      总价: 200.00
-                    </div>
-                    <div class="content_row blue_context">
-                      状态: 未处理
+                      状态: 账单异常
                     </div>
                   </div>
                 </div>

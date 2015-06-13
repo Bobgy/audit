@@ -19,6 +19,7 @@ Route::get('logout', 'PageController@getLogout');
 Route::get('check_list', 'PageController@check_list');
 Route::get('check_list_double', 'PageController@check_list_double');
 Route::get('check_list_history', 'PageController@check_list_history');
+Route::get('check_list_error', 'PageController@check_list_error');
 
 Route::get('fetch', 'PageController@fetch');
 Route::post('fetch', 'PageController@resetPassword');
