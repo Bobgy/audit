@@ -76,6 +76,14 @@ $> git clone https://github.com/Bobgy/audit.git
 
 - Visit `localhost\phpmyadmin`, add a database called `audit`, then execute the sql file `PATH\TO\audit\databse\migrations\system_admin_sedb.sql`
 
+- Edit `PATH\TO\audit\.env`
+```
+DB_HOST=localhost
+DB_DATABASE=audit
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
 - Goto `PATH\TO\audit` and create database tables by the following commands
 ```
 $> php artisan migrate

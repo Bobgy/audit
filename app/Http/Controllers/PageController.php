@@ -12,7 +12,7 @@ class PageController extends Controller {
   {
       return view('audit.index');
   }
-   // 登录操作
+  // 登录操作
   public function postLogin(Request $request)
   {
     $user_id = $request->get('_inputAccount');
