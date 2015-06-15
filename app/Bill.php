@@ -22,7 +22,7 @@ class Bill extends Model {
 		else return $record->action;
 	}
 
-	public function latestFormattedState() {
+	public function formatState($state) {
 		switch ($this->latestState()) {
 			case 0: return '未处理';
 			case 1: return '等待二次审查';
@@ -31,4 +31,9 @@ class Bill extends Model {
 		}
 		return '错误: 无效状态';
 	}
+
+	public function latestFormattedState() {
+		return $this->formatState($this->latestState());
+	}
+	
 }

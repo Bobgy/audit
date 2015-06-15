@@ -3,6 +3,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\ManagerInfo;
+use App\Bill;
+
 class PageController extends Controller {
 	public function __construct()
 	{
@@ -40,20 +42,22 @@ class PageController extends Controller {
 	{
 		return view('audit.check');
 	}
-	public function check_list()
-	{
-		return view('audit.check_list');
+	public function check_list_show($state) {
+		$bills = Bill::where('audit_state', $state)
+		             ->orderBy('date', 'asc')->take(5)->get();
+		return view('audit.check_list', compact(['bills']));
 	}
-	public function check_list_double()
-	{
-		return view('audit.check_list_double');
+	public function check_list() {
+		return $this->check_list_show(0);
 	}
-	public function check_list_history()
-	{
-		return view('audit.check_list_history');
+	public function check_list_double() {
+		return $this->check_list_show(1);
 	}
-	public function check_list_error(){
-		return view('audit.check_list_error');
+	public function check_list_history() {
+		return $this->check_list_show(2);
+	}
+	public function check_list_error() {
+		return $this->check_list_show(3);
 	}
 	public function fetch()
 	{

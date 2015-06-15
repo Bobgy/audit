@@ -31,75 +31,42 @@
         </div>
         <div class="crossLine"></div>
         <div class="subrow">
+          @foreach ($bills as $bill)
           <!-- one record -->
           <form class="record">
             <div class="column_8_noborder">
               <div class="content_full">
                 <div class="content_full_row blue_context">
-                  订单号: 100000
+                  订单号: {{ $bill->bill_id }}
                 </div>
                 <div class="crossLine"></div>
                 <div class="content_row">
-                  买家: 100000000
+                  买家: {{ $bill->buyer_id }}
                 </div>
                 <div class="content_row">
-                  卖家: 100000000
+                  卖家: {{ $bill->seller_id }}
                 </div>
                 <div class="content_row blue_context">
-                  交易时间: 100000000
+                  交易时间: {{ $bill->date }}
                 </div>
                 <div class="crossLine"></div>
                 <div class="content_row blue_context">
-                  总价: 100.00
+                  总价: {{ $bill->amount }}
                 </div>
                 <div class="content_row blue_context">
-                  状态: 未处理
+                  状态: {{ $bill->formatState($bill->audit_state) }}
                 </div>
               </div>
             </div>
             <div class="column_2_noborder">
               <div class="big_btn">
-                <input type="submit" value="审核"></input>
+                <input type="submit" value="审核" />
               </div>
             </div>
           </form>
           <div class="crossLine"></div>
           <!-- one record end-->
-
-          <!-- one record -->
-          <form class="record">
-            <div class="column_8_noborder">
-              <div class="content_full">
-                <div class="content_full_row blue_context">
-                  订单号: 100000
-                </div>
-                <div class="crossLine"></div>
-                <div class="content_row">
-                  买家: 100000000
-                </div>
-                <div class="content_row">
-                  卖家: 100000000
-                </div>
-                <div class="content_row blue_context">
-                  交易时间: 100000000
-                </div>
-                <div class="crossLine"></div>
-               <div class="content_row blue_context">
-                  总价: 200.00
-                </div>
-                <div class="content_row blue_context">
-                  状态: 未处理
-                </div>
-              </div>
-            </div>
-            <div class="column_2_noborder">
-              <div class="big_btn">
-                <input type="submit" value="审核"></input>
-              </div>
-            </div>
-          </form>
-          <div class="crossLine"></div>
-          <!-- one record end-->
+          @endforeach
 
           <!-- Page -->
           <ul id="pagination-flickr">

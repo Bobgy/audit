@@ -48,7 +48,7 @@ class CheckController extends Controller {
 	public function show($id)
 	{
 		$bill = Bill::find($id);
-		$state = $bill->latestFormattedState();
+		$state = $bill->formatState($bill->audit_state);
 		return view('audit.check', compact('id', 'bill', 'state'));
 	}
 
@@ -71,7 +71,7 @@ class CheckController extends Controller {
 
 	private function pass($id)
 	{
-		$prevStat = Bill::find($id)->latestState();
+		$prevStat = Bill::find($id)->audit_state;
 		$audit = new AuditInfo;
 		switch ($prevStat) {
 			case 0: case 1:
@@ -94,7 +94,7 @@ class CheckController extends Controller {
 
 	private function reject($id)
 	{
-		$prevStat = Bill::find($id)->latestState();
+		$prevStat = Bill::find($id)->audit_state;
 		$audit = new AuditInfo;
 		switch ($prevStat) {
 			case 0: case 1: case 2:
@@ -114,7 +114,7 @@ class CheckController extends Controller {
 
 	private function showWithError($id, $errorMessage) {
 		$bill = Bill::find($id);
-		$state = $bill->latestFormattedState();
+		$state = $bill->formatState($bill->audit_state);
 		return view('audit.check', compact('errorMessage', 'id', 'bill', 'state'));
 	}
 
