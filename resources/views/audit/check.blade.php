@@ -16,7 +16,7 @@
           <form method="post">
             <input type="submit" value="通过" id="pass_btn" name="pass" />
             <div class="crossLine"></div>
-            <input type="submit" value="报错" id="error_btn" name="error" />
+            <input type="submit" value="驳回" id="error_btn" name="reject" />
             <div class="crossLine"></div>
             <input type="submit" value="返回" id="back_btn" name="back" />
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />

@@ -16,6 +16,7 @@ class CreateAuditInfosTable extends Migration {
 		{
 			$table->increments('audit_id');
 			$table->string('bill_id', 30);
+			$table->foreign('bill_id')->references('bill_id')->on('bills');
 			$table->string('auditor_id', 30);
 			$table->dateTime('date');
 			$table->string('comment', 140);

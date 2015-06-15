@@ -48,7 +48,7 @@ class CheckController extends Controller {
 	public function show($id)
 	{
 		$bill = Bill::find($id);
-		$state = AuditInfo::getFormattedState($id);
+		$state = $bill->latestFormattedState();
 		return view('audit.check', compact('id', 'bill', 'state'));
 	}
 
@@ -63,19 +63,22 @@ class CheckController extends Controller {
 	{
 		if ($request->has('pass')) {
 			return $this->pass($id);
-		} else if ($request->has('error')) {
-			return $this->error($id);
+		} else if ($request->has('reject')) {
+			return $this->reject($id);
 		}
 		return $this->show($id);
 	}
 
 	private function pass($id)
 	{
-		$prevStat = AuditInfo::getState($id);
+		$prevStat = Bill::find($id)->latestState();
 		$audit = new AuditInfo;
 		switch ($prevStat) {
 			case 0: case 1:
-				$audit->action = $rec->action + 1;
+				$audit->action = $prevStat + 1;
+				break;
+			case 3:
+				$audit->action = 0;
 				break;
 			default:
 				$errorMessage = '错误: 无效的操作';
@@ -83,16 +86,15 @@ class CheckController extends Controller {
 		}
 		$audit->bill_id = $id;
 		$audit->auditor_id = session('user_id');
-		date_default_timezone_set('Asia/Shanghai');
 		$audit->date = date("Y-m-d H:i:s");
 		# $audit->comment = something;
 		$audit->save();
 		return $this->show($id);
 	}
 
-	private function error($id)
+	private function reject($id)
 	{
-		$prevStat = AuditInfo::getState($id);
+		$prevStat = Bill::find($id)->latestState();
 		$audit = new AuditInfo;
 		switch ($prevStat) {
 			case 0: case 1: case 2:
@@ -104,7 +106,6 @@ class CheckController extends Controller {
 		}
 		$audit->bill_id = $id;
 		$audit->auditor_id = session('user_id');
-		date_default_timezone_set('Asia/Shanghai');
 		$audit->date = date("Y-m-d H:i:s");
 		# $audit->comment = something;
 		$audit->save();
@@ -113,7 +114,7 @@ class CheckController extends Controller {
 
 	private function showWithError($id, $errorMessage) {
 		$bill = Bill::find($id);
-		$state = AuditInfo::getFormattedState($id);
+		$state = $bill->latestFormattedState();
 		return view('audit.check', compact('errorMessage', 'id', 'bill', 'state'));
 	}
 
