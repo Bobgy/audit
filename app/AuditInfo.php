@@ -27,6 +27,8 @@ class AuditInfo extends Model {
 			DB::commit();
 		} catch (Exception $e) {
 			DB::rollback();
+			return false;
 		}
+		return true;
 	}
 }

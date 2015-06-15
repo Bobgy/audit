@@ -24,7 +24,7 @@ Route::get('check_list_error', 'CheckListController@check_list_error');
 Route::get('fetch', 'PageController@fetch');
 Route::post('fetch', 'PageController@resetPassword');
 Route::get('main', 'PageController@main');
-Route::get('search', 'PageController@search');
+Route::get('search', 'CheckListController@search');
 
 Route::resource('check', 'CheckController');
 Route::post('check/{check}', 'CheckController@edit');

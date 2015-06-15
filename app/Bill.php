@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Bill extends Model {
 
@@ -35,5 +36,14 @@ class Bill extends Model {
 	public function latestFormattedState() {
 		return $this->formatState($this->latestState());
 	}
-	
+
+	static public function addQueryIfNotEmpty($query, Request $req, $col, $operator='=', $val=null) {
+		if (!isset($val)) $val = $col;
+		$val = $req[$val];
+		if (isset($val) && $val != '') {
+			return $query->where($col, $operator, $val);
+		}
+		return $query;
+	}
+
 }

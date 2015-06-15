@@ -74,8 +74,4 @@ class PageController extends Controller {
 	{
 		return view('audit.register');
 	}
-	public function search()
-	{
-		return view('audit.search');
-	}
 }
