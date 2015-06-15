@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder {
   {
     Model::unguard();
     $this->call('BillTableSeeder');
-    $this->call('AuditInfoTableSeeder');
+    //$this->call('AuditInfoTableSeeder');
   }
 
 }
@@ -26,14 +26,14 @@ class BillTableSeeder extends Seeder {
     DB::delete('delete from bills');
     $str = <<<COMMAND
 INSERT INTO `audit`.`bills`
-(`bill_id`, `seller_id`, `buyer_id`, `commodity_name`, `amount`, `date`)
-VALUES (?, ?, ?, ?, ?, '2015-06-11 00:00:00');
+(`bill_id`, `seller_id`, `buyer_id`, `commodity_name`, `amount`, `date`, `audit_state`)
+VALUES (?, ?, ?, ?, ?, '2015-06-11 00:00:00', 0);
 COMMAND;
     for ($i = 1; $i < 100; $i ++) {
       DB::insert($str, [$i,$i,$i,$i,$i]);
     }
   }
-	
+
 }
 
 class AuditInfoTableSeeder extends Seeder {

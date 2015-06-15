@@ -21,6 +21,7 @@ class CreateBillsTable extends Migration {
 			$table->string('commodity_name', 30);
 			$table->integer('amount');
 			$table->dateTime('date');
+			$table->integer('audit_state');
 		});
 	}
 
