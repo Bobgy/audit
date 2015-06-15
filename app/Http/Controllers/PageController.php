@@ -6,17 +6,13 @@ use App\ManagerInfo;
 use App\Bill;
 
 class PageController extends Controller {
-	public function __construct()
-	{
-		$this->middleware('guest');
-	}
-	public function getLogin()
-	{
+
+	public function getLogin() {
 			return view('audit.index');
 	}
+
 	 // 登录操作
-	public function postLogin(Request $request)
-	{
+	public function postLogin(Request $request) {
 		$user_id = $request->get('_inputAccount');
 		$password = $request->get('_inputPassword');
 		$true_password = ManagerInfo::find($user_id)['password'];
@@ -27,38 +23,22 @@ class PageController extends Controller {
 		session()->forget('user_id');
 		return redirect('/');
 	}
+
 	// 登出操作
-	public function getLogout()
-	{
+	public function getLogout() {
 			session()->forget('user_id');
 			return redirect('/');
 	}
-	public function index(Request $request)
-	{
+
+	public function index(Request $request) {
 		if (session('user_id')!=NULL) return redirect('main');
 		return view('audit.index');
 	}
-	public function check()
-	{
+
+	public function check() {
 		return view('audit.check');
 	}
-	public function check_list_show($state) {
-		$bills = Bill::where('audit_state', $state)
-		             ->orderBy('date', 'asc')->take(5)->get();
-		return view('audit.check_list', compact(['bills']));
-	}
-	public function check_list() {
-		return $this->check_list_show(0);
-	}
-	public function check_list_double() {
-		return $this->check_list_show(1);
-	}
-	public function check_list_history() {
-		return $this->check_list_show(2);
-	}
-	public function check_list_error() {
-		return $this->check_list_show(3);
-	}
+
 	public function fetch()
 	{
 		return view('audit.fetch');

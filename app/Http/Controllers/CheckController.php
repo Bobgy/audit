@@ -42,11 +42,11 @@ class CheckController extends Controller {
 
 	/**
 	 * Display the specified resource.
+	 *
 	 * @param	int	$id
 	 * @return Response
 	 */
-	public function show($id)
-	{
+	public function show($id) {
 		$bill = Bill::find($id);
 		$state = $bill->formatState($bill->audit_state);
 		return view('audit.check', compact('id', 'bill', 'state'));
@@ -59,8 +59,7 @@ class CheckController extends Controller {
 	 * @param	int	$id
 	 * @return Response
 	 */
-	public function edit(Request $request, $id)
-	{
+	public function edit(Request $request, $id) {
 		if ($request->has('pass')) {
 			return $this->pass($id);
 		} else if ($request->has('reject')) {
@@ -69,8 +68,7 @@ class CheckController extends Controller {
 		return $this->show($id);
 	}
 
-	private function pass($id)
-	{
+	private function pass($id) {
 		$prevStat = Bill::find($id)->audit_state;
 		$audit = new AuditInfo;
 		switch ($prevStat) {
@@ -92,8 +90,7 @@ class CheckController extends Controller {
 		return $this->show($id);
 	}
 
-	private function reject($id)
-	{
+	private function reject($id) {
 		$prevStat = Bill::find($id)->audit_state;
 		$audit = new AuditInfo;
 		switch ($prevStat) {

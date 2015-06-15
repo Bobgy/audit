@@ -16,10 +16,10 @@ Route::get('login', 'PageController@getLogin');
 Route::post('login', 'PageController@postLogin');
 Route::get('logout', 'PageController@getLogout');
 
-Route::get('check_list', 'PageController@check_list');
-Route::get('check_list_double', 'PageController@check_list_double');
-Route::get('check_list_history', 'PageController@check_list_history');
-Route::get('check_list_error', 'PageController@check_list_error');
+Route::get('check_list', 'CheckListController@check_list');
+Route::get('check_list_double', 'CheckListController@check_list_double');
+Route::get('check_list_history', 'CheckListController@check_list_history');
+Route::get('check_list_error', 'CheckListController@check_list_error');
 
 Route::get('fetch', 'PageController@fetch');
 Route::post('fetch', 'PageController@resetPassword');
