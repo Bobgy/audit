@@ -116,7 +116,17 @@
 			self.location='/audit/logout';
 		});
 	</script>
-
+	
+	@if(isset($errorMessage)))
+		<div class="box" id="box" style="display:none;">
+			<h1 id="error_log">Mismatch</h1>
+		</div>
+		<script>
+			$("#error_log").html("{{ $errorMessage }}"); 
+			$('#box').show(1000);
+		</script>
+	@endif
+			
 	@yield('script')
 
 </body>
