@@ -13,7 +13,9 @@ class CheckListController extends Controller {
 		$page = (isset($request['page']) ? $request['page'] : 1) - 1;
 		$bills = Bill::where('audit_state', $state)
 		             ->skip($page * 5)->take(5)->get();
-		return view('audit.check_list', compact(['bills', 'page']));
+		$billCount = Bill::where('audit_state', $state)->count();
+		$pageTotal = (int) (($billCount + 4) / 5);
+		return view('audit.check_list', compact(['bills', 'page', 'pageTotal']));
 	}
 
 	public function check_list(Request $request) {

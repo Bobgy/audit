@@ -63,7 +63,7 @@
       <script src="{{ asset('/lib/Flat-UI-master/dist/js/vendor/jquery.min.js') }}"></script>
       <script>
         var P = {{ $page }};
-        var PT = 10; 
+        var PT = {{ $pageTotal }};
         var base = Div(P, 7) * 7;
         $("#start").html("<a href='?page=" + 1 + "'>  <<< </a>");
         $("#end").html("<a href='?page=" + PT + "'> >>> </a>");
@@ -100,16 +100,16 @@
           $("#next").html("Next >");
         }
         function Div(exp1, exp2) {
-            var n1 = Math.round(exp1); //四舍五入   
-            var n2 = Math.round(exp2); //四舍五入  
+            var n1 = Math.round(exp1); //四舍五入
+            var n2 = Math.round(exp2); //四舍五入
 
-            var rslt = n1 / n2; //除  
+            var rslt = n1 / n2; //除
 
             if (rslt >= 0) {
-                rslt = Math.floor(rslt); //返回小于等于原rslt的最大整数。   
+                rslt = Math.floor(rslt); //返回小于等于原rslt的最大整数。
             }
             else {
-                rslt = Math.ceil(rslt); //返回大于等于原rslt的最小整数。   
+                rslt = Math.ceil(rslt); //返回大于等于原rslt的最小整数。
             }
 
             return rslt;
@@ -119,4 +119,3 @@
   </div>
 
 </div>
-
