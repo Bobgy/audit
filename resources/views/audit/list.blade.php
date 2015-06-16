@@ -37,7 +37,7 @@
         </div>
         <div class="column_2_noborder">
           <div class="big_btn">
-            <input type="submit" value="审核" />
+            <a href="/audit/check/{{ $bill->bill_id }}"> 查看 </a>
           </div>
         </div>
       </form>
