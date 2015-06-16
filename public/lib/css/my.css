@@ -374,6 +374,26 @@ div.big_btn input:hover {
     transition: all 1s;
 }
 
+div.big_btn a {
+	text-align: center;
+	display: block;
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	border: 0px;
+    background-color: #2B9C4F;
+    color: #FFFFFF;
+    transition: all 1s;
+}
+
+div.big_btn a:hover {
+	text-decoration: none;
+    background-color: #4B809F;
+    color: #FFFFFF;
+    transition: all 1s;
+}
+
+
 div.long_btn {
 	position: relative;
 	top: 2px;
