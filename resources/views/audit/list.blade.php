@@ -47,7 +47,8 @@
 
       <!-- Page -->
       <ul id="pagination-flickr">
-        <li id="pre" class="previous-off">«Previous</li>
+        <li id="start" class="previous"><a href="?page=1"> <<< </a></li>
+        <li id="pre" class="previous-off"> < Previous </li>
         <li id="p1" class="active">1</li>
         <li id="p2"><a href="?page=2">2</a></li>
         <li id="p3"><a href="?page=3">3</a></li>
@@ -55,7 +56,8 @@
         <li id="p5"><a href="?page=5">5</a></li>
         <li id="p6"><a href="?page=6">6</a></li>
         <li id="p7"><a href="?page=7">7</a></li>
-        <li id="next" class="next"><a href="?page=2">Next »</a></li>
+        <li id="next" class="next"><a href="?page=2"> Next > </a></li>
+        <li id="end" class="next"><a href="?page=1"> >>> </a></li>
       </ul>
       <!-- Page end -->
       <script src="{{ asset('/lib/Flat-UI-master/dist/js/vendor/jquery.min.js') }}"></script>
@@ -63,6 +65,8 @@
         var P = {{ $page }};
         var PT = 10; 
         var base = Div(P, 7) * 7;
+        $("#start").html("<a href='?page=" + 1 + "'>  <<< </a>");
+        $("#end").html("<a href='?page=" + PT + "'> >>> </a>");
         for (var i = 1; i < 8; i++) {
           var the_id = "#p" + i;
           if (base + i <= PT) {
@@ -76,24 +80,24 @@
         var now_id = "#p" + (P + 1 - base);
         $(now_id).addClass("active");
         $(now_id).html(P + 1);
-        
+
         if (P > 0) {
           $("#pre").removeClass("previous-off");
           $("#pre").addClass("previous");
-          $("#pre").html("<a href='?page=" + P + "'>«Previous</a>");
+          $("#pre").html("<a href='?page=" + P + "'> < Previous </a>");
         } else {
           $("#pre").removeClass("previous");
           $("#pre").addClass("previous-off");
-          $("#pre").html("«Previous");
+          $("#pre").html("< Previous");
         }
         if (P < PT - 1) {
           $("#next").removeClass("next-off");
           $("#next").addClass("next");
-          $("#next").html("<a href='?page=" + (P + 2) + "'>Next »</a>");
+          $("#next").html("<a href='?page=" + (P + 2) + "'>Next ></a>");
         } else {
           $("#next").removeClass("next");
           $("#next").addClass("next-off");
-          $("#next").html("Next »");
+          $("#next").html("Next >");
         }
         function Div(exp1, exp2) {
             var n1 = Math.round(exp1); //四舍五入   
