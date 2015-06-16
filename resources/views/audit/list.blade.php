@@ -31,7 +31,7 @@
               总价: {{ $bill->amount }}
             </div>
             <div class="content_row blue_context">
-              状态: {{ $bill->formatState($bill->audit_state) }}
+              状态: {{ App\Bill::formatState($bill->audit_state) }}
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Bill;
+use DB;
 
 class CheckListController extends Controller {
 
@@ -36,14 +37,16 @@ class CheckListController extends Controller {
 
 	public function search(Request $request) {
 		$page = (isset($request['page']) ? $request['page'] : 1) - 1;
-		$query = Bill::skip($page * 5)->take(5);
+		$query = DB::table('bills');
 		$query = Bill::addQueryIfNotEmpty($query, $request, 'bill_id');
-	  $query = Bill::addQueryIfNotEmpty($query, $request, 'buyer_id');
+	  	$query = Bill::addQueryIfNotEmpty($query, $request, 'buyer_id');
 		$query = Bill::addQueryIfNotEmpty($query, $request, 'seller_id');
 		$query = Bill::addQueryIfNotEmpty($query, $request, 'date', '>=', 'begin_date');
 		$query = Bill::addQueryIfNotEmpty($query, $request, 'date', '<=', 'end_date');
-		$bills = $query->get();
-		return view('audit.search', compact(['bills']));
+		$billCount = $query->count();
+		$pageTotal = (int) (($billCount + 4) / 5);
+		$bills = $query->skip($page * 5)->take(5)->get();
+		return view('audit.search', compact(['bills', 'pageTotal', 'page']));
 	}
 
 }

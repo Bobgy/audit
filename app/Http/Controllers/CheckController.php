@@ -48,7 +48,7 @@ class CheckController extends Controller {
 	 */
 	public function show($id) {
 		$bill = Bill::find($id);
-		$state = $bill->formatState($bill->audit_state);
+		$state = Bill::formatState($bill->audit_state);
 		return view('audit.check', compact('id', 'bill', 'state'));
 	}
 
@@ -64,6 +64,8 @@ class CheckController extends Controller {
 			return $this->pass($id);
 		} else if ($request->has('reject')) {
 			return $this->reject($id);
+		} else if ($request->has('back')) {
+			return $request;
 		}
 		return $this->show($id);
 	}

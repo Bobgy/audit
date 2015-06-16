@@ -23,8 +23,8 @@ class Bill extends Model {
 		else return $record->action;
 	}
 
-	public function formatState($state) {
-		switch ($this->latestState()) {
+	static public function formatState($state) {
+		switch ($state) {
 			case 0: return '未处理';
 			case 1: return '等待二次审查';
 			case 2: return '审查通过';
@@ -34,7 +34,7 @@ class Bill extends Model {
 	}
 
 	public function latestFormattedState() {
-		return $this->formatState($this->latestState());
+		return Bill::formatState($this->latestState());
 	}
 
 	static public function addQueryIfNotEmpty($query, Request $req, $col, $operator='=', $val=null) {
