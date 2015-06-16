@@ -65,7 +65,9 @@ class CheckController extends Controller {
 		} else if ($request->has('reject')) {
 			return $this->reject($id);
 		} else if ($request->has('back')) {
-			return $request;
+			$lastURI = session('lastURI');
+			if (!is_null($lastURI)) return redirect()->away($lastURI);
+			return redirect('main');
 		}
 		return $this->show($id);
 	}

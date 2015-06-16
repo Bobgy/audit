@@ -11,6 +11,7 @@ use DB;
 class CheckListController extends Controller {
 
 	protected function check_list_show(Request $request, $state) {
+		session(['lastURI' => $request->getRequestUri()]);
 		$page = (isset($request['page']) ? $request['page'] : 1) - 1;
 		$bills = Bill::where('audit_state', $state)
 		             ->skip($page * 5)->take(5)->get();
@@ -36,6 +37,8 @@ class CheckListController extends Controller {
 	}
 
 	public function search(Request $request) {
+		$uri = $request->getRequestUri();
+		session(['lastURI' => $uri]);
 		$page = (isset($request['page']) ? $request['page'] : 1) - 1;
 		$query = DB::table('bills');
 		$query = Bill::addQueryIfNotEmpty($query, $request, 'bill_id');
