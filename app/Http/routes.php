@@ -13,7 +13,7 @@
 Route::get('home', 'HomeController@index');
 Route::get('/', 'PageController@index');
 Route::get('login', 'PageController@getLogin');
-Route::post('login', 'PageController@postLogin');
+Route::post('/', 'PageController@postLogin');
 Route::get('logout', 'PageController@getLogout');
 
 Route::get('check_list', 'CheckListController@check_list');

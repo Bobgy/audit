@@ -22,7 +22,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+  <script src="{{ asset('/lib/Flat-UI-master/dist/js/vendor/jquery.min.js') }}"></script>
   <link href="{{ asset('/lib/Flat-UI-master/dist/css/flat-ui.css') }}" rel="stylesheet">
 
 </head>
@@ -34,7 +34,7 @@
     <div class="row">
       <div class="logInForm">
         <div class="col-md-12" style="width:320px;" >
-          <form action="login" method="post" id="logInForm" role="form">
+          <form action="" method="post" id="logInForm" role="form">
             <legend>登陆</legend>
             <div class="form-group">
               <input type="text" class="form-control input-lg" style="width:290px;" name="_inputAccount" id="inputAccount" placeholder="Account">
@@ -55,5 +55,6 @@
     </div>
   </div>
   <nav class="my_navbar">
-</nav>
+  </nav>
+  @include('audit.errorbox')
 </body>

@@ -13,21 +13,25 @@ class PageController extends Controller {
 
 	 // 登录操作
 	public function postLogin(Request $request) {
+
+		if (!is_null(session('user_id'))) return redirect('main');
+
 		$user_id = $request->get('_inputAccount');
 		$password = $request->get('_inputPassword');
-		$true_password = ManagerInfo::find($user_id)['password'];
-		if ($password == $true_password && !is_null($true_password)) {
+		$manager = ManagerInfo::find($user_id);
+		$true_password = $manager['password'];
+		if (!is_null($manager) && $password == $true_password) {
 			session(['user_id' => $user_id]);
 			return redirect('main');
 		}
-		session()->forget('user_id');
-		return redirect('/');
+		$errorMessage = '用户名/密码不匹配';
+		return view('audit.index', compact(['errorMessage']));
 	}
 
 	// 登出操作
 	public function getLogout() {
-			session()->forget('user_id');
-			return redirect('/');
+		session()->forget('user_id');
+		return redirect('/');
 	}
 
 	public function index(Request $request) {

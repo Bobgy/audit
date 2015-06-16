@@ -48,10 +48,6 @@
 
 	@yield('content')
 
-	@if (isset($errorMessage))
-		<a> {{ $errorMessage }} </a>
-	@endif
-
 	<!-- Scripts -->
 	<script src="{{ asset('/lib/Flat-UI-master/dist/js/vendor/jquery.min.js') }}"></script>
 	<!-- 用户的悬浮菜单 -->
@@ -116,17 +112,9 @@
 			self.location='/audit/logout';
 		});
 	</script>
-	
-	@if(isset($errorMessage)))
-		<div class="box" id="box" style="display:none;">
-			<h1 id="error_log">Mismatch</h1>
-		</div>
-		<script>
-			$("#error_log").html("{{ $errorMessage }}"); 
-			$('#box').show(1000);
-		</script>
-	@endif
-			
+
+	@include('audit.errorbox')
+
 	@yield('script')
 
 </body>
