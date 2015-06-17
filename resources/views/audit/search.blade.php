@@ -31,6 +31,9 @@
                 <div class="crossLine"></div>
                 <div class="long_btn">
                   <input type="submit" value="搜索"></input>
+                </div>
+                <div class="crossLine"></div>
+                <div class="long_btn">
                   <input type="submit" value="导出" name="export"></input>
                 </div>
               </div>
