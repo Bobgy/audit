@@ -396,26 +396,22 @@ div.big_btn a:hover {
 
 div.long_btn {
 	position: relative;
-	top: 2px;
+	top: 1px;
 	margin: 0 auto;
 	width: 190px;
-	height: 40px;
+	height: 42px;
 }
 
 div.long_btn input {
 	width: 100%;
-	height: 90%;
+	height: 40px;
 	border: 0px;
-    background: #4B809F;
+    background-color: #4B809F;
     color: #FFFFFF;
     transition: all 1s;
 }
 
 div.long_btn input:hover {
-	margin: 0 auto;
-	width: 95%;
-	height: 90%;
-	border: 0px;
     background: #2B9C4F;
     color: #FFFFFF;
     transition: all 1s;
