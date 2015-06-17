@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Bill;
 use DB;
+use Excel;
 
 class CheckListController extends Controller {
 
@@ -37,19 +38,36 @@ class CheckListController extends Controller {
 	}
 
 	public function search(Request $request) {
+		$input = $request->input();
 		$uri = $request->getRequestUri();
 		session(['lastURI' => $uri]);
 		$page = (isset($request['page']) ? $request['page'] : 1) - 1;
-		$query = DB::table('bills');
+		$query = Bill::query();
 		$query = Bill::addQueryIfNotEmpty($query, $request, 'bill_id');
 	  	$query = Bill::addQueryIfNotEmpty($query, $request, 'buyer_id');
 		$query = Bill::addQueryIfNotEmpty($query, $request, 'seller_id');
 		$query = Bill::addQueryIfNotEmpty($query, $request, 'date', '>=', 'begin_date');
 		$query = Bill::addQueryIfNotEmpty($query, $request, 'date', '<=', 'end_date');
+		if ($request->has('export')) {
+			$this->exportExcel($query->get());
+			return '';
+		}
 		$billCount = $query->count();
 		$pageTotal = (int) (($billCount + 4) / 5);
 		$bills = $query->skip($page * 5)->take(5)->get();
-		return view('audit.search', compact(['bills', 'pageTotal', 'page']));
+		return view('audit.search', compact(['bills', 'pageTotal', 'page', 'input']));
+	}
+
+	public function exportExcel($bills) {
+		$bills = $bills->toArray();
+		Excel::create('ExcelExport', function($excel) use($bills) {
+            $excel->sheet('FirstSheet', function($sheet) use($bills) {
+				if (count($bills)>0) {
+					$sheet->appendRow(array_keys($bills[0])); // column names
+					$sheet->fromArray($bills);
+				}
+            });
+        })->export('xlsx');
 	}
 
 }
