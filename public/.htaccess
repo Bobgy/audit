@@ -7,8 +7,8 @@
 
     # Redirect Trailing Slashes...
     RewriteRule ^(.*)/$ /$1 [L,R=301]
-
-    RewriteBase /audit
+	
+	RewriteBase /audit
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
