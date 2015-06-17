@@ -27,13 +27,12 @@ class PageController extends Controller {
 		$errorMessage = '用户名/密码不匹配';
 		return view('audit.index', compact(['errorMessage']));
 	}
-
+        
 	// 登出操作
 	public function getLogout() {
 		session()->forget('user_id');
 		return redirect('/');
 	}
-
 	public function index(Request $request) {
 		if (session('user_id')!=NULL) return redirect('main');
 		return view('audit.index');

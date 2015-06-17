@@ -439,6 +439,34 @@ div.logInPic {
 
 
 
+div.flowColumn2 .select input{
+	cursor: pointer;
+	text-align: center;
+	vertical-align: middle;
+	display: block;
+	height: 40px;
+	width: 100%;
+	line-height: 40px;
+	color: #606060;
+	background-color:  #E7E7E7;
+	font-family: Microsoft JhengHei ;
+	font-size: 16px;
+	border: 0px;
+
+}
+
+div.flowColumn2 .select input:hover{
+	text-decoration: none;
+	color: #2B9C4F;
+	background-color: #C7C7C7;
+}
+
+div.box {
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+}
+
 
 
 ul{border:0; margin:0; padding:0;}
@@ -482,26 +510,4 @@ text-decoration:none;
 }
 #pagination-flickr a:hover{
 border:solid 1px #666666;
-}
-
-div.flowColumn2 .select input{
-	cursor: pointer;
-	text-align: center;
-	vertical-align: middle;
-	display: block;
-	height: 40px;
-	width: 100%;
-	line-height: 40px;
-	color: #606060;
-	background-color:  #E7E7E7;
-	font-family: Microsoft JhengHei ;
-	font-size: 16px;
-	border: 0px;
-
-}
-
-div.flowColumn2 .select input:hover{
-	text-decoration: none;
-	color: #2B9C4F;
-	background-color: #C7C7C7;
 }
