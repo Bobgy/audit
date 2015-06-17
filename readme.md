@@ -1,27 +1,105 @@
-## Laravel PHP Framework
+### Instructions for deploying this project on WAMP
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Installation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+- install WAMP from `http://www.wampserver.com/en/`
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+- install Composer from `https://getcomposer.org/`
 
-## Official Documentation
+- install Laravel framework
+```
+$> composer global require "laravel/installer=~1.1"
+```
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+- Add `~/.composer/vendor/bin` to your PATH environment variable to let you use laravel from the command line.
 
-## Contributing
+  In Windows 8 this directory should be something like
+  `C:\Users\YOUR_USER_NAME\AppData\Roaming\Composer\vendor\bin`
+  (replace "YOUR_USER_NAME" with your actual user name)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+  If you cannot find it, search for the `Composer` directory in your system drive.
 
-## Security Vulnerabilities
+## Configuration
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+- Edit `PATH\TO\WAMP\bin\apache\apache2.4.9\conf\httpd.conf`, search for `<Directory />`, change `"Require all denied"` to `"Require all granted"` (without the quotes)
 
-### License
+  Note, `"PATH\TO\WAMP"` should be replaced with your WAMP installation path.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+- After you start WAMP server, click the status icon of it, choose `Apache` -> `Apache Modules` -> Check `rewrite_module`
+
+## Test installation
+
+- make a new laravel app called APP_NAME
+
+  (replace APP_NAME with a name for your app, use the same name for later occurrences of APP_NAME too)
+```
+$> laravel new APP_NAME
+```
+
+  It will be added to your current working directory.
+
+- To add an WAMP alias to the public folder, click your WAMP status icon and choose `Apache` -> `Alias Directories` -> `Add an alias`, then follow the instructions to add your `/PATH/TO/APP_NAME/public/` directory as an alias with name `ALIAS_NAME`
+
+  (replace "ALIAS_NAME" with a actual name to suit your need, use the same name for later occurrences of "ALIAS_NAME" too)
+
+- Edit `PATH\TO\APP_NAME\public\.htaccess`, add a line with `RewriteBase /ALIAS_NAME`
+
+- Now you should be able to access `http://localhost/ALIAS_NAME/`
+
+  Note the last "/" of the first address should not be omitted.
+
+- To access the page with `http://localhost/ALIAS_NAME`, edit `PATH\TO\WAMP\alias\ALIAS_NAME.conf`
+  Change the first line from something like:
+  ```
+  Alias /ALIAS_NAME/ "PATH/TO/APP_NAME/"
+  ```
+  to
+  ```
+  Alias /ALIAS_NAME "PATH/TO/APP_NAME/"
+  ```
+  Now, accessing from `http://localhost/ALIAS_NAME` should be okay.
+
+## Deploying this project
+
+- Follow https://help.github.com/articles/set-up-git/ to learn using git and github.com
+
+- Clone this project from github
+```
+$> git clone https://github.com/Bobgy/audit.git
+```
+
+- Laravel uses a `.env` file at `PATH\TO\APP_NAME\` to store some environment related configuration, configure it for yourself
+
+  (copy from `.env.example` if `.env` doesn't already exist)
+
+- Use composer to update dependencies, this may take a while.
+```
+$> composer update
+```
+
+- Visit `localhost\phpmyadmin`, add a database called `audit`, then execute the sql file `PATH\TO\audit\databse\migrations\system_admin_sedb.sql`
+
+- Edit `PATH\TO\audit\.env`
+```
+DB_HOST=localhost
+DB_DATABASE=audit
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+- Goto `PATH\TO\audit` and create database tables by the following commands
+```
+$> php artisan migrate --seed
+```
+
+- Create a new alias called "audit" for `PATH\TO\audit\public`, do the same fixes as explained in "Test Installation"
+
+- Now the project should be working on `localhost/audit`
+
+- To log in, add an entry in phpmyadmin's database "audit", table "manager_info" for yourself
+
+## Reference
+
+- http://www.golaravel.com/laravel/docs/5.0/
+
+- https://www.flynsarmy.com/2015/02/creating-a-basic-todo-application-in-laravel-5-part-1/
