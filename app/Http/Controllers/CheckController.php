@@ -59,15 +59,20 @@ class CheckController extends Controller {
 	 * @param	int	$id
 	 * @return Response
 	 */
+
+	protected function goBack() {
+		$lastURI = session('lastURI');
+		if (!is_null($lastURI)) return redirect()->away($lastURI);
+		return redirect('main');
+	}
+
 	public function edit(Request $request, $id) {
 		if ($request->has('pass')) {
 			return $this->pass($id);
 		} else if ($request->has('reject')) {
 			return $this->reject($id);
 		} else if ($request->has('back')) {
-			$lastURI = session('lastURI');
-			if (!is_null($lastURI)) return redirect()->away($lastURI);
-			return redirect('main');
+			return $this->goBack();
 		}
 		return $this->show($id);
 	}
@@ -91,7 +96,7 @@ class CheckController extends Controller {
 		$audit->date = date("Y-m-d H:i:s");
 		# $audit->comment = something;
 		$audit->save();
-		return $this->show($id);
+		return $this->goBack();
 	}
 
 	private function reject($id) {
@@ -110,7 +115,7 @@ class CheckController extends Controller {
 		$audit->date = date("Y-m-d H:i:s");
 		# $audit->comment = something;
 		$audit->save();
-		return $this->show($id);
+		return $this->goBack();
 	}
 
 	private function showWithError($id, $errorMessage) {
