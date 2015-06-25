@@ -32,24 +32,26 @@
   <!-- Main container -->
   <div class="container">
     <div class="row">
-      <div class="logInForm">
-        <div class="col-md-12" style="width:320px;" >
+      <div class="col-md-3">
+        <div class="" style="/* width:320px; */">
           <form action="" method="post" id="logInForm" role="form">
             <legend>登陆</legend>
             <div class="form-group">
-              <input type="text" class="form-control input-lg" style="width:290px;" name="_inputAccount" id="inputAccount" placeholder="Account">
+              <input type="text" class="form-control input-lg" style="" name="_inputAccount" id="inputAccount" placeholder="Account">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control input-lg" style="width:290px;" name="_inputPassword" id="inputPassword" placeholder="Password">
+              <input type="password" class="form-control input-lg" style="" name="_inputPassword" id="inputPassword" placeholder="Password">
             </div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="reset" name="_regBtn" value="重置" class="btn btn-lg btn-wide btn-info">
-            <input type="submit" name="_loginBtn" value="登陆" class="btn btn-lg btn-wide btn-success">
+            <div class="row">
+				<input type="reset" value="重置" name="_regBtn" class="col-md-5 btn btn-lg btn-info">
+				<input type="submit" value="登陆" name="_loginBtn" class="col-md-5 col-md-offset-2 btn btn-lg btn-success">
+			</div>
           </form>
         </div>
       </div>
-      <div class="logInPic">
-        <iframe height="490px" width="800px" frameborder="0" marginheight="0px" marginwidth="0px" scrolling="no" src="{{ asset('/res/nico.jpg') }}">
+      <div class="col-md-9">
+        <iframe height="490px" width="100%" frameborder="0" marginheight="0px" marginwidth="0px" scrolling="no" src="{{ asset('/res/nico.jpg') }}">
         </iframe>
       </div>
     </div>
