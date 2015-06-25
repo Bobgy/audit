@@ -13,7 +13,6 @@ class PageController extends Controller {
 
 	 // 登录操作
 	public function postLogin(Request $request) {
-
 		if (!is_null(session('user_id'))) return redirect('main');
 
 		$user_id = $request->get('_inputAccount');
@@ -21,10 +20,13 @@ class PageController extends Controller {
 		$manager = ManagerInfo::find($user_id);
 		$true_password = $manager['password'];
 		if (!is_null($manager) && md5($password) == $true_password) {
-			session(['user_id' => $user_id]);
-			return redirect('main');
+			if ($manager['auditor_auth']) {
+				session(['user_id' => $user_id]);
+				return redirect('main');
+			} else $errorMessage = '没有审核员权限';
+		} else {
+			$errorMessage = '用户名/密码不匹配';
 		}
-		$errorMessage = '用户名/密码不匹配';
 		return view('audit.index', compact(['errorMessage']));
 	}
 
