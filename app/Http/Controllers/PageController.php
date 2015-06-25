@@ -20,14 +20,14 @@ class PageController extends Controller {
 		$password = $request->get('_inputPassword');
 		$manager = ManagerInfo::find($user_id);
 		$true_password = $manager['password'];
-		if (!is_null($manager) && $password == $true_password) {
+		if (!is_null($manager) && md5($password) == $true_password) {
 			session(['user_id' => $user_id]);
 			return redirect('main');
 		}
 		$errorMessage = '用户名/密码不匹配';
 		return view('audit.index', compact(['errorMessage']));
 	}
-        
+
 	// 登出操作
 	public function getLogout() {
 		session()->forget('user_id');
@@ -53,14 +53,14 @@ class PageController extends Controller {
 		$newPassword = $request->get('newPassword');
 		$confirmPassword = $request->get('confirmPassword');
 		$manager = ManagerInfo::find(session('user_id'));
-		if ($oldPassword != $manager['password']) {
+		if (md5($oldPassword) != $manager['password']) {
 			$errorMessage = '密码错误';
 			return view('audit.fetch', compact('errorMessage'));
 		} else if ($newPassword != $confirmPassword) {
 			$errorMessage = '两次输入的密码不一致';
 			return view('audit.fetch', compact('errorMessage'));
 		}
-		$manager->password = $newPassword;
+		$manager->password = md5($newPassword);
 		$manager->save();
 		session()->forget('user_id');
 		return view('audit.index');
