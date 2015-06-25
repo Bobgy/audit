@@ -32,7 +32,6 @@
 		<div class="top">
 			<div class="header">
 				<a href="/audit/check_list"> 账单 </a>
-				<a> 导出 </a>
 				<a href="/audit/search"> 搜索 </a>
 			</div>
 			<div id="user" class="ender">
